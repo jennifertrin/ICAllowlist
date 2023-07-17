@@ -25,7 +25,9 @@ const Component = () => {
                     Claim NFT
                 </button> :
                 <div>
-                    <span>Please connect your wallet to claim this NFT</span>
+                    <p>
+                        <span>Please connect your wallet to claim this NFT</span>
+                    </p>
                     <div className={styles.connect}>
                         <ConnectWallet
                             dropdownPosition={{
