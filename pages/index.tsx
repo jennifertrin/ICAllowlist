@@ -1,9 +1,15 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, useContract, useNFT, ThirdwebNftMedia, useAddress } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
-import Image from "next/image";
 import { NextPage } from "next";
+import ClaimButton from "./components/ClaimButton";
 
 const Home: NextPage = () => {
+  const { data: contract } = useContract("0xd0297E911E9A625facEB88CF5c2bcc055e1394A9");
+
+  const { data: nft } = useNFT(contract, "0");
+
+  const address = useAddress()
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -16,90 +22,43 @@ const Home: NextPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                thirdweb.
+                thirdweb
+              </a>
+              <span className={styles.header}>
+                {" "}
+                and the
+                {" "}
+              </span>
+              <a
+                href="https://internetcomputer.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Internet Computer.
               </a>
             </span>
           </h1>
 
-          <p className={styles.description}>
-            Get started by configuring your desired network in{" "}
-            <code className={styles.code}>src/index.js</code>, then modify the{" "}
-            <code className={styles.code}>src/App.js</code> file!
-          </p>
-
-          <div className={styles.connect}>
+          {address ? <div className={styles.connect}>
             <ConnectWallet
               dropdownPosition={{
                 side: "bottom",
                 align: "center",
               }}
             />
-          </div>
+          </div> : null}
         </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://portal.thirdweb.com/"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/images/portal-preview.png"
-              alt="Placeholder preview of starter"
-              width={300}
-              height={200}
-            />
-            <div className={styles.cardText}>
-              <h2 className={styles.gradientText1}>Portal ➜</h2>
+        <div>
+          {nft && (
+            <>
+              <ThirdwebNftMedia metadata={nft.metadata} style={{ maxWidth: 240 }} />
               <p>
-                Guides, references, and resources that will help you build with
-                thirdweb.
+                <span>Name:</span> {nft?.metadata.name}
               </p>
-            </div>
-          </a>
-
-          <a
-            href="https://thirdweb.com/dashboard"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/images/dashboard-preview.png"
-              alt="Placeholder preview of starter"
-              width={300}
-              height={200}
-            />
-            <div className={styles.cardText}>
-              <h2 className={styles.gradientText2}>Dashboard ➜</h2>
-              <p>
-                Deploy, configure, and manage your smart contracts from the
-                dashboard.
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="https://thirdweb.com/templates"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/images/templates-preview.png"
-              alt="Placeholder preview of templates"
-              width={300}
-              height={200}
-            />
-            <div className={styles.cardText}>
-              <h2 className={styles.gradientText3}>Templates ➜</h2>
-              <p>
-                Discover and clone template projects showcasing thirdweb
-                features.
-              </p>
-            </div>
-          </a>
+            </>
+          )}
+          <ClaimButton />
         </div>
       </div>
     </main>
