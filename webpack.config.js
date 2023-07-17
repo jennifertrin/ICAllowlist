@@ -3,8 +3,8 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
+          test: /\.ts?$/,
+          exclude: [/node_modules/, /pages\/canisters/],
           use: 'ts-loader',
         },
       ],
