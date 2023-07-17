@@ -1,34 +1,17 @@
 module.exports = {
-    entry: './src/index.ts',
+    // ...
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-react',
-                '@babel/preset-flow',
-                '@babel/preset-typescript'
-              ],
-            },
-          },
-        }
-      ]
+          use: 'ts-loader',
+        },
+      ],
     },
     resolve: {
-      extensions: ['*', '.ts', '.tsx']
+      extensions: ['.tsx', '.ts', '.js'],
     },
-    output: {
-      path: __dirname + '/dist',
-      publicPath: '/',
-      filename: 'bundle.js'
-    },
-    devServer: {
-      contentBase: './dist'
-    },
-    mode: 'development'
+    // ...
   };
+  
