@@ -3,9 +3,9 @@
         "allowlist": {
             "type": "custom",
             "build": "npx azle allowlist",
-            "root": "pages/canisters/allowlist/src",
-            "ts": "pages/canisters/allowlist/src/index.ts",
-            "candid": "pages/canisters/allowlist/src/index.did",
+            "root": "canisters/allowlist/src",
+            "ts": "canisters/allowlist/src/index.ts",
+            "candid": "canisters/allowlist/src/index.did",
             "wasm": ".azle/allowlist/allowlist.wasm.gz"
         }
     }

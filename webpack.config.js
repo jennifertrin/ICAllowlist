@@ -1,24 +1,17 @@
 module.exports = {
-    entry: './src/index.ts',
+    // ...
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader']
-        }
-      ]
+          test: /\.ts?$/,
+          exclude: [/node_modules/, /pages\/canisters/],
+          use: 'ts-loader',
+        },
+      ],
     },
     resolve: {
-      extensions: ['*', '.ts', '.tsx']
+      extensions: ['.tsx', '.ts', '.js'],
     },
-    output: {
-      path: __dirname + '/dist',
-      publicPath: '/',
-      filename: 'bundle.js'
-    },
-    devServer: {
-      contentBase: './dist'
-    },
-    mode: 'development'
+    // ...
   };
+  
