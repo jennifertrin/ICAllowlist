@@ -1,0 +1,1 @@
+service : { queryAddress : (text) -> (text) query }

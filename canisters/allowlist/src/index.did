@@ -1,1 +1,1 @@
-service : () -> { getMessage : () -> (text) query; setMessage : (text) -> () }
+service : () -> { queryAddress : (text) -> (text) query }

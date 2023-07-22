@@ -4,7 +4,7 @@ module.exports = {
       rules: [
         {
           test: /\.ts?$/,
-          exclude: [/node_modules/, /pages\/canisters/],
+          exclude: [/node_modules/, /canisters/, /src/],
           use: 'ts-loader',
         },
       ],
