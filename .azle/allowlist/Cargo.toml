@@ -3,8 +3,8 @@
 
         [workspace]
         members = [
-            "pages/canisters/allowlist/src",
-            "pages/canisters/allowlist/src/azle_generate"
+            "canisters/allowlist/src",
+            "canisters/allowlist/src/azle_generate"
         ]
 
         [profile.release]
